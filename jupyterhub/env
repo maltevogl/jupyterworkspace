@@ -1,0 +1,31 @@
+# env
+#
+# add your github oauth config to this file
+# and launch the server with `sh run.sh`
+#
+# Note: Be careful to keep the client secret private. Use caution
+#       with version control to prevent publicly exposing the secret.
+#
+##
+OAUTH_CLIENT_ID=jupyterhub
+OAUTH_CLIENT_SECRET=JUPYTERHUB_OAUTH_SECRET
+OAUTH_CALLBACK_URL=https://JUPYTERHUB_BASE_URL/hub/oauth_callback
+##
+OPENID_HOST=DEX_BASE_URL
+JUPYTER_HOST=JUPYTERHUB_BASE_URL
+NEXTCLOUD_HOST=NEXTCLOUD_BASE_URL
+##
+CONNECTOR_LIST=mitre,github
+##
+WEBDAV_HOST=https://NEXTCLOUD_BASE_URL/remote.php/webdav/
+NXTC_API=https://NEXTCLOUD_BASE_URL/ocs/v1.php/cloud
+ADMIN_USER=NEXTCLOUD_ADMIN
+ADMIN_PASSWORD=NEXTCLOUD_ADMIN_PWD
+##
+USERS_LIST=WHITELISTED_USERS
+##
+ADMIN_PASSWORD_HUB=JUPYTERHUB_ADMIN_PWD
+CHECKPOINTS_PASSWORD=JUPYTERHUB_CHECKPOINTS_PWD
+JPY_PSQL_PASSWORD=JUPYTERHUB_STATE_PWD
+##
+LOGIN_SERVICE=Dex

@@ -1,0 +1,71 @@
+# The base path of dex and the external name of the OpenID Connect service.
+# This is the canonical URL that all clients MUST use to refer to dex. If a
+# path is provided, dex's HTTP service will listen at a non-root URL.
+issuer: https://DEX_BASE_URL
+
+oauth2:
+  skipApprovalScreen: true
+
+# The storage configuration determines where dex stores its state. Supported
+# options include SQL flavors and Kubernetes third party resources.
+#
+# See the storage document at Documentation/storage.md for further information.
+storage:
+  type: postgres
+  config:
+    database: dex_db
+    user: dex
+    host: postgres
+    password: DEX_POSTGRES_PASSWORD
+    ssl:
+      mode: disable 
+
+# Configuration for the HTTP endpoints.
+web:
+  http: 0.0.0.0:5556
+  # Uncomment for HTTPS options.
+  https: 0.0.0.0:5554
+  tlsCert: /etc/dex/tls.crt
+  tlsKey: /etc/dex/tls.key
+
+# Options for controlling the logger.
+logger:
+  level: "debug"
+  format: "text" # can also be "json"
+
+staticClients:
+
+- id: jupyterhub
+  redirectURIs:
+  - 'https://JUPYTERHUB_BASE_URL/hub/oauth_callback'
+  name: 'Jupyter Hub'
+  secret: JUPYTERHUB_OAUTH_SECRET
+
+- id: nextcloud
+  redirectURIs:
+  - 'https://NEXTCLOUD_BASE_URL/apps/useroidc/login/openidconnect'
+  name: 'Nextcloud'
+  secret: NEXTCLOUD_OAUTH_SECRET
+
+
+connectors:
+
+- type: oidc
+  id: mitre
+  name: MitreOIDC
+  config:
+    issuer: https://MITRE_BASE_URL
+    clientID: DEX_CLIENT_ID_MITRE
+    clientSecret: DEX_CLIENT_SECRET_MITRE
+    redirectURI: https://DEX_BASE_URL/callback
+    scopes: ["openid","profile","email"]
+
+- type: github
+  id: github
+  name: Github
+  config:
+    clientID: DEX_CLIENT_ID_GITHUB
+    clientSecret: DEX_CLIENT_SECRET_GITHUB
+    redirectURI: https://DEX_BASE_URL/callback
+
+

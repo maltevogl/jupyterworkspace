@@ -1,0 +1,12 @@
+version: '2'
+
+services:
+  dexoidc:
+    build: .
+    environment:
+      - DEX_HOST="DEX_BASE_URL_AS_CN"
+    ports: 
+      - "5554:5554"
+      - "5556:5556"
+  postgres:
+    build: ./postgres/
