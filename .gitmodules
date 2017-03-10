@@ -1,0 +1,6 @@
+[submodule "forks/jupyterhub"]
+	path = forks/jupyterhub
+	url = https://github.com/maltevogl/jupyterhub.git
+[submodule "nextcloud/data/apps/useroidc"]
+	path = nextcloud/data/apps/useroidc
+	url = https://github.com/maltevogl/useroidc.git
