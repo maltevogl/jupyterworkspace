@@ -1,4 +1,3 @@
----------------------------------
 #Setting up a JupyterHub workspace 
 ---------------------------------
 
@@ -36,14 +35,17 @@ To use the provided files, the files have to be adapted at several places. Grep 
 ------
 
 Clone the repository and its submodules:
- 
-git clone git://github.com/foo/bar.git
-cd bar
+ ```
+git clone https://github.com/maltevogl/jupyterworkspace.git
+
+cd jupyterworkspace
+
 git submodule update --init --recursive
+```
 
 The structure should be
 
-    -->jupyWorkspace
+    -->jupyterworkspace
         --> forks/jupyterhub
         --> jupyterhub
         --> nextcloud
@@ -55,4 +57,5 @@ The structure should be
 After editing the above mentioned settings, deploy first dexoidc, then nextcloud, then JupyterHub.
 
 Users are requiered to login first via JupyterHub, as this initiates the user creation and mounts the webdav. After this process the NextCloud frontend can be used with the Dex Oauth Login. 
+
 User passwords are set with a uuid, such that login is only possible via the Dex flow. Only the admin user for JupyterHub and Nextcloud have conventional passwords.
