@@ -21,6 +21,8 @@ services:
       - /dev/fuse
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
+      - ./certs/fullchain.pem:/etc/certs/ssl.crt:ro
+      - ./certs/privkey.pem:/etc/certs/ssl.key:ro
     security_opt:
       - apparmor:unconfined
     ports:

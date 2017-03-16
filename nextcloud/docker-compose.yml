@@ -30,6 +30,7 @@ services:
       - ./data/apps:/var/www/html/apps
       - ./data/config:/var/www/html/config
       - ./data/data:/var/www/html/data
+      - OpenIDConnectClient.php:/var/www/html/apps/useroidc/vendor/jumbojett/openid-connect-php/OpenIDConnectClient.php
     networks:
     - back
   db:
