@@ -1,4 +1,4 @@
-#Setting up a JupyterHub workspace 
+# Setting up a JupyterHub workspace 
 ---------------------------------
 
 This repository tries to give guidelines for setting up a JupyterHub environment, where data-sharing is enabled by a NextCloud-backend and users are authentified with CoreOS’s dex OpenIDConnect Client.
@@ -31,7 +31,7 @@ To use the provided files, the files have to be adapted at several places. Grep 
     DEX_CLIENT_ID_GITHUB
     DEX_CLIENT_SECRET_GITHUB
 
-##Step1:
+## Step1:
 ------
 
 Clone the repository and its submodules:
@@ -51,10 +51,10 @@ The structure should be
         --> nextcloud
         --> dexoidc
 
-##Step2: 
+## Step2: 
 ------
 
-After editing the above mentioned settings, deploy first dexoidc, then nextcloud, then JupyterHub.
+After editing the above mentioned settings, deploy first dexoidc, then nextcloud, then JupyterHub. Depending on your ssl settings, importing a root CA into the nextcloud container might be requiered. 
 
 Users are requiered to login first via JupyterHub, as this initiates the user creation and mounts the webdav. After this process the NextCloud frontend can be used with the Dex Oauth Login. 
 
